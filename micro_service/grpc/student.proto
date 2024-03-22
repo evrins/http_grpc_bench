@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option  go_package = "./;student_service";
+
+message Student {
+  string name = 1;
+  int64  created_at = 2;
+  map<string, float> Scores = 3;
+  repeated string Locations = 4;
+  bool Gender = 5;
+  int32 Age = 6[deprecated = true];
+  float Height = 7;
+  int32  Id = 8;
+}
+
+message Students {
+  repeated Student Data = 1;
+}
+
+message StudentID {
+  int32 Id = 1;
+}
+
+message StudentIDs {
+  repeated int32 Ids = 1;
+}
+
+service StudentService {
+  rpc GetStudent(StudentID) returns (Student);
+}
